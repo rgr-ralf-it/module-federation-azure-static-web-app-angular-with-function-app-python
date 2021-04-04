@@ -55,19 +55,7 @@
 ## Update github repos
 
 ```sh
-## Update root
-(
-    set -e
-    set -u
-    set -o pipefail
 
-    MSG="Updated root"
-
-    echo "[INFO] updating up ROOT repo:"
-    git add .
-    git commit -m "${MSG}"
-    git push -u origin main
-)
 
 ## Update submodule app
 (
@@ -114,7 +102,19 @@
         git push -u origin main
     )
 )
+## Update root
+(
+    set -e
+    set -u
+    set -o pipefail
 
+    MSG="Updated root"
+
+    echo "[INFO] updating up ROOT repo:"
+    git add .
+    git commit -m "${MSG}"
+    git push -u origin main
+)
 ```
 
 ## Usefull commands
