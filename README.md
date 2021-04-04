@@ -61,8 +61,7 @@
     set -u
     set -o pipefail
 
-    SUBM="app"
-    MSG="."
+    MSG="Updated root"
 
     echo "[INFO] updating up ROOT repo:"
     git add .
@@ -76,7 +75,7 @@
     set -u
     set -o pipefail
     SUB="app"
-    MSG="."
+    MSG="Updated ${SUB}"
 
     (
         echo "[INFO] updating up ${SUB} subrepo:"
@@ -98,7 +97,7 @@
     set -u
     set -o pipefail    
     SUB="api"
-    MSG="."
+    MSG="Updated ${SUB}"
 
     (
         echo "[INFO] updating up ${SUB} subrepo:"
