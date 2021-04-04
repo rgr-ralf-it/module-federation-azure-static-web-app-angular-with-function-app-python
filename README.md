@@ -117,11 +117,9 @@
 
 ```
 
-## Usefull commands
+## Useful(less) commands
 
 ```sh
-# 
-git push --recurse-submodules
 
 # can not add submodule -> ??? already in the index
 git rm -r --cached --force app
