@@ -1,0 +1,6 @@
+[submodule "app"]
+	path = app
+	url = git@github.com:jon-grey/sample-app-module-federation-azure-web-app-angular-azure.git
+[submodule "api"]
+	path = api
+	url = git@github.com:jon-grey/sample-app-module-federation-azure-function-api-python.git
