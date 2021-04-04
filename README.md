@@ -1,7 +1,8 @@
 
 
-# Setup github repo with submodules
+# Github
 
+## Init root with submodules
 
 ```sh
 
@@ -49,6 +50,7 @@
 )
 
 ```
+
 
 ## Update root
 
