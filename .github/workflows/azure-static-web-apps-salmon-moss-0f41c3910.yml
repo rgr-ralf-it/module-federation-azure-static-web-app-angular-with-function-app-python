@@ -11,7 +11,7 @@ on:
       - app/package.json
       - app/tsconfig.json
       - app/tslint.json
-      - .github/workflows/azure-static-web-apps-mfe1.yml
+      - .github/workflows/azure-static-web-apps-salmon-moss-0f41c3910.yml
       
   pull_request:
     types: [opened, synchronize, reopened, closed]
@@ -24,7 +24,7 @@ on:
       - app/package.json
       - app/tsconfig.json
       - app/tslint.json
-      - .github/workflows/azure-static-web-apps-mfe1.yml
+      - .github/workflows/azure-static-web-apps-salmon-moss-0f41c3910.yml
 jobs:
   build_and_deploy_job:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
