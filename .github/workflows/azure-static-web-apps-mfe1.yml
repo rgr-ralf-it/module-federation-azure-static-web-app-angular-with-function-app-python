@@ -5,21 +5,25 @@ on:
     branches:
       - main
     paths:
+      - app/projects/mfe1
       - app/projects/ui-lib
+      - app/projects/message-bus
       - app/package.json
       - app/tsconfig.json
       - app/tslint.json
-      - .github/workflows/azure-static-web-apps-ui-lib.yml
+      - .github/workflows/azure-static-web-apps-mfe1.yml
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
       - main
     paths:
+      - app/projects/mfe1
       - app/projects/ui-lib
+      - app/projects/message-bus
       - app/package.json
       - app/tsconfig.json
       - app/tslint.json
-      - .github/workflows/azure-static-web-apps-ui-lib.yml
+      - .github/workflows/azure-static-web-apps-mfe1.yml
 jobs:
   build_and_deploy_job:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
@@ -39,9 +43,9 @@ jobs:
           ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
           app_location: "/app" # App source code path
-          output_location: "dist/ui-lib" # Built app content directory - optional
+          output_location: "dist/mfe1" # Built app content directory - optional
 
-          app_build_command: npm run build-prod:ui-lib
+          app_build_command: npm run build-prod:mfe1
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:

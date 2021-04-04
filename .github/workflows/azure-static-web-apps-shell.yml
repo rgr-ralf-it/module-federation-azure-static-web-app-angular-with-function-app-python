@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - app/projects/shell
+      - app/projects/ui-lib
       - app/package.json
       - app/tsconfig.json
       - app/tslint.json
@@ -16,10 +17,12 @@ on:
       - main
     paths:
       - app/projects/shell
+      - app/projects/ui-lib
       - app/package.json
       - app/tsconfig.json
       - app/tslint.json
       - .github/workflows/azure-static-web-apps-shell.yml
+      
 jobs:
   build_and_deploy_job:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')

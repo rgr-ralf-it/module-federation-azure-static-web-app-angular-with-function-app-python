@@ -76,6 +76,7 @@
     set -o pipefail
     SUB="app"
     MSG="Updated ${SUB}"
+    MSG="Make local libs as dependencies in package.json - build with apps."
 
     (
         echo "[INFO] updating up ${SUB} subrepo:"
