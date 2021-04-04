@@ -12,6 +12,7 @@ on:
       - app/tsconfig.json
       - app/tslint.json
       - .github/workflows/azure-static-web-apps-mfe1.yml
+      
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
