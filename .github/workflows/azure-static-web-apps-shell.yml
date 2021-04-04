@@ -7,11 +7,12 @@ on:
     paths:
       - app/projects/shell
       - app/projects/ui-lib
+      - app/projects/message-bus
       - app/package.json
       - app/tsconfig.json
       - app/tslint.json
       - .github/workflows/azure-static-web-apps-shell.yml
-      
+
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
@@ -19,6 +20,7 @@ on:
     paths:
       - app/projects/shell
       - app/projects/ui-lib
+      - app/projects/message-bus
       - app/package.json
       - app/tsconfig.json
       - app/tslint.json
