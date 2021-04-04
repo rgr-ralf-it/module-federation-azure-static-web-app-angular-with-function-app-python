@@ -15,46 +15,47 @@
     API_REPO='git@github.com:jon-grey/sample-app-module-federation-azure-function-api-python.git'
 
     (
-        set -e
-
         echo "[INFO] setting up APP subrepo: ${APP_REPO}"
         cd app
         git init
         git add .
-        git commit -m "first commit" || true
+        git commit -m "first commit"
         git branch -M main
-        git remote add origin ${APP_REPO} || true
+        git remote add origin ${APP_REPO}
         git push -u origin main
     )
 
-    (
-        set -e
-    
+    (    
         echo "[INFO] setting up API subrepo: ${API_REPO}"
         cd api
         git init
         git add .
-        git commit -m "first commit" || true
+        git commit -m "first commit" 
         git branch -M main
-        git remote add origin ${API_REPO} || true
+        git remote add origin ${API_REPO}
         git push -u origin main
     )
 
-    (
-        set -e
-        
+    (        
         echo "[INFO] setting up root subrepo: ${ROOT_REPO}"
         git init
         echo "[INFO] setting up root submodule APP: ${APP_REPO}"
-        git submodule add ${APP_REPO} api || true
+        git submodule add ${APP_REPO} app 
         echo "[INFO] setting up root submodule API: ${API_REPO}"
-        git submodule add ${API_REPO} app || true
+        git submodule add ${API_REPO} api 
         git add .
-        git commit -m "first commit" || true
+        git commit -m "first commit" 
         git branch -M main
-        git remote add origin ${ROOT_REPO} || true
+        git remote add origin ${ROOT_REPO}
         git push -u origin main
     )
 )
+
+# 
+git push --recurse-submodules
+
+# xyz already in the index
+git rm -r --cached --force app
+git rm -r --cached --force api
 
 ```
