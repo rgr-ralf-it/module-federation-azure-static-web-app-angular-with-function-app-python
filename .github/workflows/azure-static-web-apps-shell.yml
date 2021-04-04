@@ -43,7 +43,6 @@ jobs:
           output_location: "dist/shell" # Built app content directory - optional
 
           app_build_command: npm run build-prod:shell
-          api_build_command: "true"
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
