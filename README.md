@@ -52,9 +52,10 @@
 ```
 
 
-## Update root
+## Update github repos
 
 ```sh
+## Update root
 (
     set -e
     set -u
@@ -69,57 +70,50 @@
     git push -u origin main
 )
 
-```
-
-## Update submodules
-
-```sh
+## Update submodule app
 (
+    set -e
     set -u
     set -o pipefail
-    
-    (
-        set -e
-    
-        SUBM="app"
-        MSG="."
+    SUB="app"
+    MSG="."
 
-        (
-            echo "[INFO] updating up APP subrepo:"
-            cd ${SUBM}
-            git add .
-            git commit -m "${MSG}"
-            git push -u origin main
-        )
-        (
-            echo "[INFO] updating up ROOT repo:"
-            git add ${SUBM}
-            git commit -m "Updated submodule ${SUBM}"
-            git push -u origin main
-        )
+    (
+        echo "[INFO] updating up ${SUB} subrepo:"
+        cd ${SUB}
+        git add .
+        git commit -m "${MSG}"
+        git push -u origin main
     )
     (
-        set -e
-    
-        SUBM="api"
-        MSG="."
-
-        (
-            echo "[INFO] updating up APP subrepo:"
-            cd ${SUBM}
-            git add .
-            git commit -m "${MSG}"
-            git push -u origin main
-        )
-        (
-            echo "[INFO] updating up ROOT repo:"
-            git add ${SUBM}
-            git commit -m "Updated submodule ${SUBM}"
-            git push -u origin main
-        )
+        echo "[INFO] updating up ROOT repo:"
+        git add ${SUB}
+        git commit -m "Updated submodule ${SUB}"
+        git push -u origin main
     )
 )
+## Update submodule api
+(
+    set -e
+    set -u
+    set -o pipefail    
+    SUB="api"
+    MSG="."
 
+    (
+        echo "[INFO] updating up ${SUB} subrepo:"
+        cd ${SUB}
+        git add .
+        git commit -m "${MSG}"
+        git push -u origin main
+    )
+    (
+        echo "[INFO] updating up ROOT repo:"
+        git add ${SUB}
+        git commit -m "Updated submodule ${SUB}"
+        git push -u origin main
+    )
+)
 
 ```
 
