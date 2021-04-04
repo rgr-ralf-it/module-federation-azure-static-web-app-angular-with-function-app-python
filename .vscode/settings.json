@@ -1,0 +1,10 @@
+{
+    "staticWebApps.appSubpath": "/app",
+    "staticWebApps.apiSubpath": "/api",
+    "staticWebApps.outputSubpath": "build/app",
+    "liveServer.settings.proxy": {
+        "enable": true,
+        "baseUri": "/api",
+        "proxyUri": "http://127.0.0.1:7071/api"
+     }
+}
