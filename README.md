@@ -1,5 +1,9 @@
 
-# Try locally to start app
+# Angular Microsfrontends
+
+Read my other repository for concept about microfrontends [jon-grey/sample-app-module-federation-angular](https://github.com/jon-grey/sample-app-module-federation-angular)
+
+## Try to start app locally
 
 ```sh
 # angular does not support webpack 5 by default
@@ -36,7 +40,29 @@ and by pressing `search flights`
 
 ![](images/README/2021-04-05-02-33-47.png)
 
-# Azure
+# Azure Static Web App
+
+### Concept
+
+From [Azure Static Web Apps – App service | Microsoft Azure](https://azure.microsoft.com/en-us/services/app-service/static/#overview)
+
+> **Develop modern web apps fast with global reach and scale!**
+
+> Accelerate your app development with a static front end and dynamic back end powered by serverless APIs. Experience high productivity with a tailored local development experience, GitHub native workflows to build and deploy your app, and unified hosting and management in the cloud.
+
+![](images/README/2021-04-05-02-43-04.png)
+
+### How does it work?
+
+- develop my app locally
+- push to github
+- github workflows will build it
+- github workflows will ship it to Azure Web Apps, 
+- use serverless backend in Azure Functions
+- to access other of Azure resources.
+
+
+# Setup Azure Resources
 
 ## Step 1) Create Static Web App for `shell`
 
@@ -60,12 +86,19 @@ we point app location to `/app` and api to `/api`. Output location is `dist/shel
 
 ## Step 2) Create Static Web App for `mfe1`
 
-As in Step 1) we do the same for `mfe1` microftontend.
+As in Step 1) we do the same for `mfe1` microftontend. We also select the same repository to have monorepo.
 
 ...
 
 Here we also point app location to `/app` and api to `/api` (optional). Output location is `dist/mfe1`.
 
+## Step 3) After that we should have two static web apps
+
+![](images/README/2021-04-05-02-37-12.png)
+
+![](images/README/2021-04-05-02-37-25.png)
+
+![](images/README/2021-04-05-02-37-35.png)
 
 ## Step 3) Manually edit github workflows for `shell` and `mfe1`
 
