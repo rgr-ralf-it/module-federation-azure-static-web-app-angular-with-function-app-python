@@ -1,8 +1,163 @@
 
+# Try locally
 
-# Github
+```sh
+# angular does not support webpack 5 by default
+# so we need to use yarn for building
+ng config -g cli.packageManager yarn
 
-## Init root with submodules
+# install dependencies
+yarn
+
+# build app
+npm run build-prod
+
+# start shell and mfe1, then open in browser at diff ports
+npm run start
+```
+
+We should be capable to open `localhost:5000` and see
+
+![](images/README/2021-04-05-02-07-52.png)
+
+clicking on flights should redirect us to `mfe1`
+
+![](images/README/2021-04-05-02-08-05.png)
+
+and bokings is not implemented
+
+![](images/README/2021-04-05-02-08-47.png)
+
+# Azure
+
+At first lets create Static Web App for `shell` of our microfrontends (`mfe`).
+
+Create new Static Web App
+
+![](images/README/2021-04-05-01-52-32.png)
+
+Connect to github
+
+![](images/README/2021-04-05-01-52-42.png)
+
+As we have web app and api in root folder
+
+![](images/README/2021-04-05-01-57-02.png)
+
+we point app location to `/app` and api to `/api`. Output location is `dist/shell`:
+
+![](images/README/2021-04-05-01-58-50.png)
+
+Then we will do the same for `mfe1` microftontend.
+
+After pulling from github we should have two new yamls:
+
+![](images/README/2021-04-05-02-00-30.png)
+
+Edit them one by one to be like. First for shell:
+
+```yaml
+name: Azure Static Web Apps CI/CD - SHELL
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - app/projects/shell
+      - app/projects/ui-lib
+      - app/projects/message-bus
+      - app/package.json
+      - app/tsconfig.json
+      - app/tslint.json
+      - .github/workflows/azure-static-web-apps-lively-flower-04e21dc10.yml
+
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    branches:
+      - main
+    paths:
+      - app/projects/shell
+      - app/projects/ui-lib
+      - app/projects/message-bus
+      - app/package.json
+      - app/tsconfig.json
+      - app/tslint.json
+      - .github/workflows/azure-static-web-apps-lively-flower-04e21dc10.yml
+      
+jobs:AZURE_STATIC_WEB_APPS_API_TOKEN_LIVELY_FLOWER_04E21DC10
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
+    runs-on: ubuntu-latest
+    name: Build and Deploy Job
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+      - name: Build And Deploy
+        id: builddeploy
+        uses: Azure/static-web-apps-deploy@v0.0.1-preview
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_LIVELY_FLOWER_04E21DC10 }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
+          action: "upload"
+          ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
+          # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
+          app_location: "/app" # App source code path
+          api_location: "/api" # Api source code path - optional
+          output_location: "dist/shell" # Built app content directory - optional
+
+          app_build_command: npm run build-prod:shell
+          ###### End of Repository/Build Configurations ######
+
+  close_pull_request_job:
+    if: github.event_name == 'pull_request' && github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    name: Close Pull Request Job
+    steps:
+      - name: Close Pull Request
+        id: closepullrequest
+        uses: Azure/static-web-apps-deploy@v0.0.1-preview
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_LIVELY_FLOWER_04E21DC10 }}
+          action: "close"
+```
+
+Here used by github, deployment token `AZURE_STATIC_WEB_APPS_API_TOKEN_LIVELY_FLOWER_04E21DC10` can be found by clicking `Manage deployment token`:
+
+![](images/README/2021-04-05-02-02-15.png)
+
+After pushing changes to github, we can go to actions and verify successful build:
+
+![](images/README/2021-04-05-02-12-35.png)
+
+We can see that it take up to 5min. 
+
+![](images/README/2021-04-05-02-20-27.png)
+
+Then we can open [Shell](https://lively-flower-04e21dc10.azurestaticapps.net/) and [Mfe1](https://salmon-moss-0f41c3910.azurestaticapps.net) in the browser. Our pages should be served the same as in local development. 
+
+Azure is using highly efficient CDN servers to serve our static files.
+
+
+
+# Development
+
+```sh
+# angular does not support webpack 5 by default
+# so we need to use yarn for building
+ng config -g cli.packageManager yarn
+
+# install dependencies
+yarn
+
+# concurrent build with watching and rebuilding on failures, plus concurent start
+npm run dev
+```
+
+
+## Github
+
+### Init root with submodules
 
 ```sh
 
@@ -52,7 +207,7 @@
 ```
 
 
-## Update github repos
+### Update github repos
 
 ```sh
 
@@ -62,7 +217,7 @@
     set -u
     set -o pipefail
 
-    MSG="Updated root"
+    MSG="Updated readme"
 
     echo "[INFO] updating up ROOT repo:"
     git add .
@@ -117,7 +272,7 @@
 
 ```
 
-## Useful(less) commands
+### Useful(less) commands
 
 ```sh
 
