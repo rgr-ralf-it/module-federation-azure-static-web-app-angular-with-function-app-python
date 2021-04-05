@@ -1,5 +1,5 @@
 
-# Try locally
+# Try locally to start app
 
 ```sh
 # angular does not support webpack 5 by default
@@ -20,7 +20,7 @@ We should be capable to open `localhost:5000` and see
 
 ![](images/README/2021-04-05-02-07-52.png)
 
-clicking on flights should redirect us to `mfe1`
+clicking on flights should load remote module from `mfe1`
 
 ![](images/README/2021-04-05-02-08-05.png)
 
@@ -28,7 +28,17 @@ and bokings is not implemented
 
 ![](images/README/2021-04-05-02-08-47.png)
 
+With `localhost:3000` we will see
+
+![](images/README/2021-04-05-02-33-36.png)
+
+and by pressing `search flights`
+
+![](images/README/2021-04-05-02-33-47.png)
+
 # Azure
+
+## Step 1) Create Static Web App for `shell`
 
 At first lets create Static Web App for `shell` of our microfrontends (`mfe`).
 
@@ -48,7 +58,16 @@ we point app location to `/app` and api to `/api`. Output location is `dist/shel
 
 ![](images/README/2021-04-05-01-58-50.png)
 
-Then we will do the same for `mfe1` microftontend.
+## Step 2) Create Static Web App for `mfe1`
+
+As in Step 1) we do the same for `mfe1` microftontend.
+
+...
+
+Here we also point app location to `/app` and api to `/api` (optional). Output location is `dist/mfe1`.
+
+
+## Step 3) Manually edit github workflows for `shell` and `mfe1`
 
 After pulling from github we should have two new yamls:
 
@@ -125,6 +144,10 @@ jobs:AZURE_STATIC_WEB_APPS_API_TOKEN_LIVELY_FLOWER_04E21DC10
 Here used by github, deployment token `AZURE_STATIC_WEB_APPS_API_TOKEN_LIVELY_FLOWER_04E21DC10` can be found by clicking `Manage deployment token`:
 
 ![](images/README/2021-04-05-02-02-15.png)
+
+## Step 4) Push changes to github
+
+Note: can use this hack for lazy ppl [Update github repos](#update-github-repos)
 
 After pushing changes to github, we can go to actions and verify successful build:
 
