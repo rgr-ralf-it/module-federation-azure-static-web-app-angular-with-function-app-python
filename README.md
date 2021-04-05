@@ -6,6 +6,14 @@ Read my other repository for concept about microfrontends [jon-grey/sample-app-m
 ## Try to start app locally
 
 ```sh
+# by main branch is for development, by default with dynamic federation from angular
+git checkout main
+# switch to branch with dynamic federation with angular
+# big thanks to @angular-architects/module-federation for that
+git checkout dynamic_federation_from_angular
+# or to static federation with webpack
+git checkout static_federation_from_webpack
+
 # angular does not support webpack 5 by default
 # so we need to use yarn for building
 ng config -g cli.packageManager yarn
